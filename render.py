@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
 
 import re
-import shutil
 
 def render_template(path):
 	s = r'{src:"{{src}}"},'
