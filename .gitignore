@@ -2,5 +2,4 @@ __pycache__/
 images/
 chromedriver.exe
 config.py
-render.py
 url_pool

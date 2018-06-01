@@ -1,0 +1,29 @@
+html,body{margin:0;padding:0;}
+#box{
+	width: 1000px;
+	margin:0 auto;
+}
+#box ul{
+	overflow:hidden;
+	list-style: none;
+	margin:0;
+	padding:5px;
+	box-sizing: border-box;
+	font-size: 0;
+}
+#box ul li{
+	float: left;
+	width: 205px;
+	font-size: 12px;
+	box-shadow: 0 0 5px #ccc;
+	padding: 8px;
+	margin: 6px;
+}
+#box ul li img{
+	width: 100%;
+	height:auto;
+	opacity: 0;
+	margin-bottom: 5px;
+	transition:all 1s;
+}
+.bot{height: 500px;}
