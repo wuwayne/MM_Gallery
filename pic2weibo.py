@@ -10,6 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ChromeOptions
+from multiprocessing import Pool
 
 import config
 
@@ -17,9 +18,9 @@ class weibo_login(object):
 
 	url = 'http://weibo.com/login.php'
 
-	def __init__(self):
-		self.__account = config.account
-		self.__passwd = config.passwd
+	def __init__(self,account=config.account,passwd=config.passwd):
+		self.__account = account
+		self.__passwd = passwd
 		self.__url = weibo_login.url
 
 	def login(self):
@@ -72,25 +73,38 @@ class weibo_login(object):
 			with open('cookie','w+',encodeind='UTF-8') as f:
 				f.write(cookie)
 
-def pic2weibo(path,cookies):
-	with open(path,'rb') as f:
+def pic2weibo(pic_path,cookies):
+	with open(pic_path,'rb') as f:
 		ba = base64.b64encode(f.read())
 	data = {'b64_data':ba}
 	r =requests.post(config.full_site,cookies=cookies,data=data)
 	url = 'http://ww2.sinaimg.cn/large/'+re.search(r'"pid":"(.*)"',r.text).group(1)
-	return url
+
+	with open ('url_pool','a+') as f:
+		f.write(url.strip()+'\n')
+
+def images_path(images_folder_path):
+	for x in os.listdir(images_folder_path):
+		path = os.path.join(os.path.abspath(images_folder_path),x)
+		yield path
+
+# if __name__ == '__main__':
+# 	w = weibo_login()
+# 	cookies = w.login()
+# 	if cookie:
+# 		write_url_pool(r'images/full',cookies)
+# 	else:
+# 		print('Login failed!')
 
 if __name__ == '__main__':
 	w = weibo_login()
-	cookie = w.login()
-	# if cookie:
-	# 	print(cookie)#test
-	if cookie:
-		print(cookie)
-		img_path = r'images/full'
-		for x in os.listdir(img_path):
-			path = os.path.join(os.path.abspath(img_path),x)
-			# print(pic2weibo(path,cookie))
-			with open ('url_pool','a+') as f:
-				f.write(pic2weibo(path,cookie).strip()+'\n')
-		print('Done!')
+	cookies = w.login()
+	if cookies:
+		p = Pool(20)
+		for x in images_path(r'images'):
+			p.apply_async(pic2weibo, args=(x,cookies))
+		p.close()
+		p.join()
+		print('All uploaded!')
+	else:
+		print('Login failed!')
