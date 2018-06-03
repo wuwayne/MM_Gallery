@@ -3,3 +3,4 @@ images/
 chromedriver.exe
 config.py
 url_pool
+bad_url

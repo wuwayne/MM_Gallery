@@ -66,7 +66,6 @@ class weibo_login(object):
 	    else:
 	        return False
 
-
 	def write_cookie(self):
 		cookie = self.login()
 		if cookie:
@@ -74,27 +73,23 @@ class weibo_login(object):
 				f.write(cookie)
 
 def pic2weibo(pic_path,cookies):
-	with open(pic_path,'rb') as f:
-		ba = base64.b64encode(f.read())
-	data = {'b64_data':ba}
-	r =requests.post(config.full_site,cookies=cookies,data=data)
-	url = 'http://ww2.sinaimg.cn/large/'+re.search(r'"pid":"(.*)"',r.text).group(1)
+	try:
+		with open(pic_path,'rb') as f:
+			ba = base64.b64encode(f.read())
+		data = {'b64_data':ba}
+		r =requests.post(config.full_site,cookies=cookies,data=data)
+		url = 'http://ww2.sinaimg.cn/large/'+re.search(r'"pid":"(.*)"',r.text).group(1)
 
-	with open ('url_pool','a+') as f:
-		f.write(url.strip()+'\n')
+		with open ('url_pool','a+') as f:
+			f.write(url.strip()+'\n')
+
+	except Exception as e:
+		pass
 
 def images_path(images_folder_path):
 	for x in os.listdir(images_folder_path):
 		path = os.path.join(os.path.abspath(images_folder_path),x)
 		yield path
-
-# if __name__ == '__main__':
-# 	w = weibo_login()
-# 	cookies = w.login()
-# 	if cookie:
-# 		write_url_pool(r'images/full',cookies)
-# 	else:
-# 		print('Login failed!')
 
 if __name__ == '__main__':
 	w = weibo_login()
