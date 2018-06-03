@@ -14,6 +14,6 @@ If it doesn't then sorry to bother and thank you for your time.
  
  Nothing magic.It simply is a bunch of Scrapy spiders to crawl beauty picture and auto upload to the weibo images hosting then show themselves in a waterfall way.
  
- It's here [DEMO](https://wuwayne.github.io/HBP/)
+ Right now it has almost 100000 pics:here [DEMO](https://wuwayne.github.io/HBP/)
  
  Hope you enjoying!
