@@ -10,10 +10,10 @@ If it doesn't then sorry to bother and thank you for your time.
  
  When I in the middle of problems I need to relax and clear my mind，so here it comes.
  
- # What does HBP do
+# What does HBP do
  
  Nothing magic.It simply is a bunch of Scrapy spiders to crawl beauty picture and auto upload to the weibo images hosting then show themselves in a waterfall way.
  
- Right now it has almost 100000 pics:here [DEMO](https://wuwayne.github.io/HBP/)
+ Right now it has almost 100000 pics.Here is the [DEMO](https://wuwayne.github.io/HBP/)
  
  Hope you enjoying!
