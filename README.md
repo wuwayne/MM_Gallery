@@ -4,7 +4,7 @@
 
 - 图片全部爬自网上，目前约有将近10W张
 
-- Just enjoying：[MM](https://wuwayne.github.io/HBP/)
+- Just enjoying：[MM](https://wuwayne.github.io/MM_Gallery/)
 
 
 
