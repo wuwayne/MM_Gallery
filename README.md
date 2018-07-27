@@ -1,19 +1,10 @@
-# HBP
+# 简介
 
-HBP stands for HeartBeat Project,which means its mainly goal is to quicken your heartbeat or even a "heart attack"(lol)
+- MM_Gallery是一个展示图片的静态网页
 
-If it doesn't then sorry to bother and thank you for your time.
+- 图片全部爬自网上，目前约有将近10W张
 
-# Why HBP
+- Just enjoying：[MM](https://wuwayne.github.io/HBP/)
 
- I do not consider myself a real programmer,I just write code to solve problems for myself.
- 
- When I in the middle of problems I need to relax and clear my mind，so here it comes.
- 
-# What does HBP do
- 
- Nothing magic.It simply is a bunch of Scrapy spiders to crawl beauty picture and auto upload to the weibo images hosting then show themselves in a waterfall way.
- 
- Right now it has almost 100000 pics.Here is the [DEMO](https://wuwayne.github.io/HBP/)
- 
- Hope you enjoying!
+
+
